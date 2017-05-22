@@ -1,0 +1,24 @@
+Package: RCoreUI
+Title: Create CoreUI Dashboards with 'Shiny'
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Guangming", "Lang", role = c("aut", "cre"), email = "gmlang@cabaceo.com"),
+    person("Lei", "Shi", role = "aut", email = "foxshee@gmail.com"),
+    person("Shuxiao", "Liu", role = "aut", email = "vxiao2046@gmail.com"),
+    person(family = "Cabaceo LLC", role = "cph"),
+    person(family = "RStudio", role = c("ctb", "cph")),
+    person(family = "Lukasz Holeczek", role = c("ctb", "cph"), 
+           comment = "CoreUI is an open source bootstrap 4 based admin template.")
+    )
+Description: Create dashboards with 'Shiny'. This package provides
+    a different theme other than the default them of shinydashboard, making it 
+    easy to create elegant and customized dashboards.
+URL:
+Depends: R (>= 3.3.2)
+License: GPL-2 | file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: utils,
+    shiny (>= 1.0.0),
+    htmltools (>= 0.2.6)
+RoxygenNote: 6.0.1

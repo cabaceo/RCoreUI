@@ -26,9 +26,6 @@
 #' @family boxes
 #'
 #' @examples
-#' ## Only run this example in interactive R sessions
-#' if (interactive()) {
-#' library(shiny)
 #'
 #'
 #' @export
@@ -86,6 +83,6 @@ box <- function(..., title = NULL, subtitle="docs", footer = NULL,
                 div(class="chart-wrapper",...))
             )
           )
-        ）
+        )
         
 }

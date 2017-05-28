@@ -10,21 +10,18 @@ appendDependencies = function(x, value) {
 
 # add dashboard dependencies to a tag object
 addDeps = function(x) {
-        CoreUI_js  = RCoreUI_js = "app.js"
-        CoreUI_css = RCoreUI_css = c("style.css", "simple-line-icons.css",
-                                     "font-awesome.min.css") # , "font-awesome.css"
+        dir_CoreUI_js = system.file("CoreUI/js", package = "RCoreUI")
+        dir_CoreUI_css = system.file("CoreUI/css", package = "RCoreUI")
+        CoreUI_js  = "app.js"
+        CoreUI_css = c("style.css", "simple-line-icons.css",
+                       "font-awesome.min.css") # , "font-awesome.css"
 
         dashboardDeps = list(
                 # htmlDependency is a function in htmltools
                 htmlDependency("CoreUI", "1.0.0-alpha.5",
-                               src = c(file = system.file("CoreUI", package = "RCoreUI")),
+                               src = c(file = ),
                                script = CoreUI_js,
-                               stylesheet = CoreUI_css),
-                htmlDependency("RCoreUI",
-                               as.character(utils::packageVersion("RCoreUI")),
-                               src = c(file = system.file(package = "RCoreUI")),
-                               script = RCoreUI_js,
-                               stylesheet = RCoreUI_css)
+                               stylesheet = CoreUI_css)
         )
 
         appendDependencies(x, dashboardDeps)

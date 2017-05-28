@@ -19,8 +19,10 @@ addDeps = function(x) {
         dashboardDeps = list(
                 # htmlDependency is a function in htmltools
                 htmlDependency("CoreUI", "1.0.0-alpha.5",
-                               src = c(file = ),
-                               script = CoreUI_js,
+                               src = c(file = dir_CoreUI_js),
+                               script = CoreUI_js),
+                htmlDependency("CoreUI", "1.0.0-alpha.5",
+                               src = c(file = dir_CoreUI_css),
                                stylesheet = CoreUI_css)
         )
 

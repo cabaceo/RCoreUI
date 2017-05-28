@@ -1,29 +1,30 @@
 # add a html dependency without overwriting existing ones
-appendDependencies <- function(x, value) {
-        if (inherits(value, "html_dependency")) value <- list(value)
+appendDependencies = function(x, value) {
+        if (inherits(value, "html_dependency")) value = list(value)
 
-        old <- attr(x, "html_dependencies", TRUE)
+        old = attr(x, "html_dependencies", TRUE)
 
-        htmlDependencies(x) <- c(old, value)
+        htmlDependencies(x) = c(old, value)
         x
 }
 
 # add dashboard dependencies to a tag object
-addDeps <- function(x) {
-        coreUI_js <- c("app.js", "charts.js", "main.js", "widgets.js")
-        coreUI_css <- c("style.css", "simple-line-icons.css",
-                        "font-awesome.min.css", "font-awesome.css")
+addDeps = function(x) {
+        CoreUI_js  = RCoreUI_js = "app.js"
+        CoreUI_css = RCoreUI_css = c("style.css", "simple-line-icons.css",
+                                     "font-awesome.min.css") # , "font-awesome.css"
 
-        dashboardDeps <- list(
+        dashboardDeps = list(
+                # htmlDependency is a function in htmltools
                 htmlDependency("CoreUI", "1.0.0-alpha.5",
-                               c(file = system.file("CoreUI", package = "RCoreUI")),
-                               script = coreUI_js,
-                               stylesheet = coreUI_css)
-                # htmlDependency("shinydashboard",
-                #                as.character(utils::packageVersion("shinydashboard")),
-                #                c(file = system.file(package = "shinydashboard")),
-                #                script = shinydashboard_js,
-                #                stylesheet = "shinydashboard.css")
+                               src = c(file = system.file("CoreUI", package = "RCoreUI")),
+                               script = CoreUI_js,
+                               stylesheet = CoreUI_css),
+                htmlDependency("RCoreUI",
+                               as.character(utils::packageVersion("RCoreUI")),
+                               src = c(file = system.file(package = "RCoreUI")),
+                               script = RCoreUI_js,
+                               stylesheet = RCoreUI_css)
         )
 
         appendDependencies(x, dashboardDeps)

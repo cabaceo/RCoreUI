@@ -2,4 +2,12 @@
 
 export(box)
 export(dashboardBody)
+export(dashboardHeader)
+export(dropdownMenu)
+export(messageItem)
+export(notificationItem)
+export(tabItem)
+export(tabItems)
+export(taskItem)
+export(updateTabItems)
 import(htmltools)

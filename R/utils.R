@@ -1,3 +1,7 @@
+#' Create a function that will return html5 "main" tag
+#' @keywords internal
+main = function(...) tag("main", list(...))
+
 #' Assert that a tag has specified properties
 #' @param tag A tag object.
 #' @param type The type of a tag, like "div", "a", "span".

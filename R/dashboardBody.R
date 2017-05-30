@@ -8,10 +8,6 @@
 #' @seealso \code{\link{tabItems}}, \code{\link{box}}, \code{\link{valueBox}}.
 #'
 #' @export
-dashboardBody <- function(...) {
-  div(class = "content-wrapper",
-    tags$section(class = "content",
-      ...
-    )
-  )
-}
+
+dashboardBody = function(...) main(class = "main", list(...))
+

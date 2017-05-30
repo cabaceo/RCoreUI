@@ -4,8 +4,7 @@
 \alias{dashboardHeader}
 \title{Create a header for a dashboard page}
 \usage{
-dashboardHeader(..., title = NULL, titleWidth = NULL, disable = FALSE,
-  .list = NULL)
+dashboardHeader(..., title = NULL, .list = NULL)
 }
 \arguments{
 \item{...}{Items to put in the header. Should be \code{\link{dropdownMenu}}s.}
@@ -15,15 +14,15 @@ will also be used as the title shown in the browser's title bar. If you
 want that to be different from the text in the dashboard header bar, set
 the \code{title} in \code{\link{dashboardPage}}.}
 
+\item{.list}{An optional list containing items to put in the header. Same as
+the \code{...} arguments, but in list format. This can be useful when
+working with programmatically generated items.}
+
 \item{titleWidth}{The width of the title area. This must either be a number
 which specifies the width in pixels, or a string that specifies the width
 in CSS units.}
 
 \item{disable}{If \code{TRUE}, don't display the header bar.}
-
-\item{.list}{An optional list containing items to put in the header. Same as
-the \code{...} arguments, but in list format. This can be useful when
-working with programmatically generated items.}
 }
 \description{
 A dashboard header can be left blank, or it can include dropdown menu items
@@ -35,7 +34,7 @@ if (interactive()) {
 library(shiny)
 
 # A dashboard header with 3 dropdown menus
-header <- dashboardHeader(
+header = dashboardHeader(
   title = "Dashboard Demo",
 
   # Dropdown menu for messages

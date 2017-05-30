@@ -1,3 +1,6 @@
+## It seems addDeps() is used to create a dashboard page in a Shiny app, NOT
+## used for any of the dashboard elements themselves.
+
 # add a html dependency without overwriting existing ones
 appendDependencies = function(x, value) {
         if (inherits(value, "html_dependency")) value = list(value)
@@ -10,20 +13,24 @@ appendDependencies = function(x, value) {
 
 # add dashboard dependencies to a tag object
 addDeps = function(x) {
-        dir_CoreUI_js = system.file("CoreUI/js", package = "RCoreUI")
-        dir_CoreUI_css = system.file("CoreUI/css", package = "RCoreUI")
-        CoreUI_js  = "app.js"
-        CoreUI_css = c("style.css", "simple-line-icons.css",
-                       "font-awesome.min.css") # , "font-awesome.css"
-
         dashboardDeps = list(
                 # htmlDependency is a function in htmltools
-                htmlDependency("CoreUI", "1.0.0-alpha.5",
-                               src = c(file = dir_CoreUI_js),
-                               script = CoreUI_js),
-                htmlDependency("CoreUI", "1.0.0-alpha.5",
-                               src = c(file = dir_CoreUI_css),
-                               stylesheet = CoreUI_css)
+                htmlDependency(
+                        "CoreUI", "0.0.0.9000", # version of RCoreUI
+                        src = c(href = "CoreUI",
+                                file = system.file("CoreUI", package = "RCoreUI")
+                                ),
+                        script = "js/app.js"
+                ),
+                htmlDependency(
+                        "CoreUI", "0.0.0.9000", # version of RCoreUI
+                        src = c(href = "CoreUI",
+                                file = system.file("CoreUI", package = "RCoreUI")
+                                ),
+                        stylesheet = c("css/style.css",
+                                       "css/simple-line-icons.css",
+                                       "css/font-awesome.min.css") # , "font-awesome.css"
+                )
         )
 
         appendDependencies(x, dashboardDeps)

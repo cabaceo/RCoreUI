@@ -86,24 +86,35 @@
 #' )
 #' }
 #' @export
-dashboardHeader = function(..., title = NULL,
-                           # titleWidth = NULL,
-                           # disable = FALSE,
-                           .list = NULL) {
+dashboardHeader = function(..., title = NULL, titleWidth = NULL,
+                           disable = FALSE, .list = NULL) {
         items = c(list(...), .list)
         lapply(items, tagAssert, type = "li", class = "dropdown")
 
+        ## TASK: implement custom titleWidth
+
+        ## TASK: implement title and logo display (upper left corner)
+
         tags$header(class = "app-header navbar",
-                    # custom_css,
-                    # style = if (disable) "display: none;",
-                    # span(class = "logo", title),
+                    style = if (disable) "display: none;",
 
                     tags$button(class="navbar-toggler mobile-sidebar-toggler d-lg-none", "☰"),
-                    a(href="#",class="navbar-brand"),
+                    a(href="#", class="navbar-brand"),
                     tags$ul(class="nav navbar-nav d-md-down-none",
                             tags$li(class="nav-item",
-                                    a(href="#", class="nav-link navbar-toggler sidebar-toggler"))
+                                    a(href="#", class="nav-link navbar-toggler sidebar-toggler")),
+                            tags$li(class="nav-item px-3",
+                                    a(href="#",class="nav-link","Dashboard")),
+                            tags$li(class="nav-item px-3",
+                                    a(href="#",class="nav-link","Users")),
+                            tags$li(class="nav-item px-3",
+                                    a(href="#",class="nav-link","Settings"))
                     ),
+                    
+                    # tags$ul(class="nav navbar-nav d-md-down-none",
+                    #         tags$li(class="nav-item",
+                    #                 a(href="#", class="nav-link navbar-toggler sidebar-toggler"))
+                    # ),
 
                     tags$ul(class="nav navbar-nav ml-auto",
                             items

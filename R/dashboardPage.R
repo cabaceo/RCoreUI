@@ -44,17 +44,17 @@ dashboardPage = function(header, sidebar, body, title = NULL) {
         app_body = div(class = "app-body", sidebar, body)
         content = div(class = "app", header, app_body)
 
-        # # if the sidebar has the attribute `data-collapsed = "true"`, it means
-        # # the user set the `collapsed` argument of `dashboardSidebar` to TRUE
-        # collapsed = findAttribute(sidebar, "data-collapsed", "true")
+        # if the sidebar has the attribute `data-collapsed = "true"`, it means
+        # the user set the `collapsed` argument of `dashboardSidebar` to TRUE
+        collapsed = findAttribute(sidebar, "data-collapsed", "true")
 
         addDeps(
                 tags$body(
                         # the "sidebar-collapse" class on the body means that
                         # the sidebar should be collapsed (AdminLTE code)
-                        # class = if (collapsed) " sidebar-collapse",
-                        # style = "min-height: 611px;",
-                        bootstrapPage(content, title = title)
+                        class = if (collapsed) " sidebar-collapse",
+                        style = "min-height: 611px;",
+                        shiny::bootstrapPage(content, title = title)
                 )
         )
 }

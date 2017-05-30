@@ -19,5 +19,6 @@ License: GPL-2 | file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: utils,
-    htmltools (>= 0.2.6)
+    htmltools (>= 0.2.6),
+    shiny (>= 1.0.0)
 RoxygenNote: 6.0.1

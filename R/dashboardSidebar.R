@@ -60,18 +60,14 @@
 #' )
 #' }
 #' @export
-dashboardSidebar = function(...,
-                            width = NULL
-                            # disable = F,
-                            # collapsed = F
-                            ) {
+dashboardSidebar = function(..., disable = FALSE, width = NULL, collapsed = FALSE) {
 
-        # # If we're restoring a bookmarked app, this holds the value of whether
-        # # or not the sidebar was collapsed. If this is not the case, the default
-        # # is whatever the user specified in the `collapsed` argument.
-        # dataValue = shiny::restoreInput(id = "sidebarCollapsed", default = collapsed)
-        # if (disable) dataValue = TRUE # this is a workaround to fix #209
-        # dataValueString = if (dataValue) ".sidebar-hidden" else ""
+        # If we're restoring a bookmarked app, this holds the value of whether
+        # or not the sidebar was collapsed. If this is not the case, the default
+        # is whatever the user specified in the `collapsed` argument.
+        dataValue = shiny::restoreInput(id = "sidebarCollapsed", default = collapsed)
+        if (disable) dataValue = TRUE # this is a workaround to fix #209
+        dataValueString = if (dataValue) ".sidebar-hidden" else ""
 
         # The expanded/collapsed state of the sidebar is actually set by adding a
         # class to the body (not to the sidebar). However, it makes sense for the
@@ -79,10 +75,9 @@ dashboardSidebar = function(...,
         # just passed through (as the `data-collapsed` attribute) to the
         # `dashboardPage()` function
         div(class = "sidebar",
-            # `data-collapsed` = dataValueString,
-            # custom_css,
+            `data-collapsed` = dataValueString,
             tags$nav(class = "sidebar-nav",
-                     # `data-disable` = if (disable) 1 else NULL,
+                     `data-disable` = if (disable) 1 else NULL,
                      tags$ul(class = "nav",
                              list(...)
                              )

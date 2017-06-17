@@ -4,11 +4,14 @@
 \alias{dashboardHeader}
 \title{Create a header for a dashboard page}
 \usage{
-dashboardHeader(..., title = NULL, titleWidth = NULL, disable = FALSE,
-  .list = NULL)
+dashboardHeader(..., .list = NULL)
 }
 \arguments{
 \item{...}{Items to put in the header. Should be \code{\link{dropdownMenu}}s.}
+
+\item{.list}{An optional list containing items to put in the header. Same as
+the \code{...} arguments, but in list format. This can be useful when
+working with programmatically generated items.}
 
 \item{title}{An optional title to show in the header bar.. By default, this
 will also be used as the title shown in the browser's title bar. If you
@@ -20,10 +23,6 @@ which specifies the width in pixels, or a string that specifies the width
 in CSS units.}
 
 \item{disable}{If \code{TRUE}, don't display the header bar.}
-
-\item{.list}{An optional list containing items to put in the header. Same as
-the \code{...} arguments, but in list format. This can be useful when
-working with programmatically generated items.}
 }
 \description{
 A dashboard header can be left blank, or it can include dropdown menu items

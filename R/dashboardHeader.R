@@ -86,8 +86,7 @@
 #' )
 #' }
 #' @export
-dashboardHeader = function(..., title = NULL, titleWidth = NULL,
-                           disable = FALSE, .list = NULL) {
+dashboardHeader = function(..., .list = NULL) {
         items = c(list(...), .list)
         lapply(items, tagAssert, type = "li", class = "dropdown")
 
@@ -96,8 +95,6 @@ dashboardHeader = function(..., title = NULL, titleWidth = NULL,
         ## TASK: implement title and logo display (upper left corner)
 
         tags$header(class = "app-header navbar",
-                    style = if (disable) "display: none;",
-
                     tags$button(class="navbar-toggler mobile-sidebar-toggler d-lg-none", "☰"),
                     a(href="#", class="navbar-brand"),
                     tags$ul(class="nav navbar-nav d-md-down-none",

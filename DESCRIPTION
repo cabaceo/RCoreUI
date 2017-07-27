@@ -22,4 +22,6 @@ Imports:
     htmltools (>= 0.2.6),
     shiny (>= 1.0.0),
     utils
+Suggests:
+    testthat
 RoxygenNote: 6.0.1

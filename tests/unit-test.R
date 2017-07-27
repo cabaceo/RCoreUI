@@ -1,6 +1,12 @@
+#!/usr/bin/env Rscript
+
+# Re-load the current package
+devtools::load_all(".")
+
 if (interactive()) {
-        library(RCoreUI)
-        # library(shiny)
+    library(shiny)
+    library(RCoreUI)
+
 
         shiny::shinyApp(
                 ui = dashboardPage(

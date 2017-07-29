@@ -1,0 +1,14 @@
+/** ================================
+ * A "bridge" CSS to neutralize the CSS style of shiny.
+ *
+ * It is needed when the UI framework uses a different "version" of Bootstrap than Shiny.
+ *
+*/
+
+
+/* -----------------
+ Fonts
+ ------------------- */
+html {
+    font-size: 16px;  /* Reset to Browser default - 16px. */
+}

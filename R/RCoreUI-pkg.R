@@ -1,6 +1,6 @@
 #' RCoreUI
 #'
-#' @docType package
 #' @name RCoreUI
+#' @docType package
 #' @import htmltools
 NULL

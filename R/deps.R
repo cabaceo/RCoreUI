@@ -1,14 +1,7 @@
-# Define the js and css files to be loaded in Shiny
-
-loaded_css <- c(
-    "css/font-awesome.css",
-    "css/simple-line-icons.css",
-    "css/shiny-bridge.css",
-    "css/style.css"
-)
-loaded_js <- c(
-    "js/app.js"
-)
+# define the js and css files to be loaded in Shiny
+loaded_css = c("css/font-awesome.css", "css/simple-line-icons.css",
+               "css/shiny-bridge.css", "css/style.css")
+loaded_js = c("js/app.js")
 
 # add a html dependency without overwriting existing ones
 appendDependencies = function(x, value) {

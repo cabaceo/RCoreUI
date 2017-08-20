@@ -1,16 +1,15 @@
-#' Create a header for a dashboard page
+#' Create a header for a dashboard page.
 #'
-#' A dashboard header can be left blank, or it can include dropdown menu items
+#' A dashboard header can be blank, or it can include dropdown menu items
 #' on the right side.
 #'
-#' @param title An optional title to show in the header bar.. By default, this
-#'   will also be used as the title shown in the browser's title bar. If you
-#'   want that to be different from the text in the dashboard header bar, set
-#'   the \code{title} in \code{\link{dashboardPage}}.
-#' @param titleWidth The width of the title area. This must either be a number
-#'   which specifies the width in pixels, or a string that specifies the width
-#'   in CSS units.
-#' @param disable If \code{TRUE}, don't display the header bar.
+#' @param title An optional title to show in the header. By default, it'll
+#'   also be used as the title shown in the browser's title bar. If you
+#'   want that to be different, set the
+#'   \code{title} in \code{\link{dashboardPage}}.
+#' @param titleWidth The width of the title area. Must be either a number
+#'   (in pixels) or a string (in CSS units).
+#' @param disable If \code{TRUE}, don't display the header.
 #' @param ... Items to put in the header. Should be \code{\link{dropdownMenu}}s.
 #' @param .list An optional list containing items to put in the header. Same as
 #'   the \code{...} arguments, but in list format. This can be useful when
@@ -24,7 +23,7 @@
 #' library(shiny)
 #'
 #' # A dashboard header with 3 dropdown menus
-#' header = dashboardHeader(
+#' header <- dashboardHeader(
 #'   title = "Dashboard Demo",
 #'
 #'   # Dropdown menu for messages
@@ -86,39 +85,60 @@
 #' )
 #' }
 #' @export
-dashboardHeader = function(..., .list = NULL) {
-        items = c(list(...), .list)
-        lapply(items, tagAssert, type = "li", class = "dropdown")
+dashboardHeader <- function(..., title = NULL, titleWidth = NULL,
+                            disable = FALSE, .list = NULL) {
+  items <- c(list(...), .list)
+  lapply(items, tagAssert, type = "li", class = "dropdown")
 
-        ## TASK: implement custom titleWidth
+  titleWidth <- validateCssUnit(titleWidth)
 
-        ## TASK: implement title and logo display (upper left corner)
+  # Set up custom CSS for custom width.
+  custom_css <- NULL
+  if (!is.null(titleWidth)) {
+    # This CSS is derived from the header-related instances of '230px' (the
+    # default sidebar width) from inst/AdminLTE/AdminLTE.css. One change is that
+    # instead making changes to the global settings, we've put them in a media
+    # query (min-width: 768px), so that it won't override other media queries
+    # (like max-width: 767px) that work for narrower screens.
+    custom_css <- tags$head(tags$style(HTML(gsub("_WIDTH_", titleWidth, fixed = TRUE, '
+      @media (min-width: 768px) {
+        .main-header > .navbar {
+          margin-left: _WIDTH_;
+        }
+        .main-header .logo {
+          width: _WIDTH_;
+        }
+      }
+    '))))
+  }
 
-        tags$header(class = "app-header navbar",
-                    tags$button(class="navbar-toggler mobile-sidebar-toggler d-lg-none", "☰"),
-                    a(href="#", class="navbar-brand"),
-                    tags$ul(class="nav navbar-nav d-md-down-none",
-                            tags$li(class="nav-item",
-                                    a(href="#", class="nav-link navbar-toggler sidebar-toggler")),
-                            tags$li(class="nav-item px-3",
-                                    a(href="#",class="nav-link","Dashboard")),
-                            tags$li(class="nav-item px-3",
-                                    a(href="#",class="nav-link","Users")),
-                            tags$li(class="nav-item px-3",
-                                    a(href="#",class="nav-link","Settings"))
-                    ),
-                    
-                    # tags$ul(class="nav navbar-nav d-md-down-none",
-                    #         tags$li(class="nav-item",
-                    #                 a(href="#", class="nav-link navbar-toggler sidebar-toggler"))
-                    # ),
+  tags$header(class = "app-header navbar",
+              custom_css,
+              style = if (disable) "display: none;",
+              span(class = "logo", title),
 
-                    tags$ul(class="nav navbar-nav ml-auto",
-                            items
-                    )
-        )
+              # toggle button for mobile display????
+              tags$button(class="navbar-toggler mobile-sidebar-toggler d-lg-none",
+                          "☰"),
+
+              # a(class="navbar-brand", href="#"), # hardcode title and logo
+
+              # add left toggle
+              tags$ul(class="nav navbar-nav d-md-down-none",
+                      tags$li(class="nav-item",
+                              a(class="nav-link navbar-toggler sidebar-toggler",
+                                href="#", "☰"))
+              )
+
+              # # add right toggle
+              # tags$ul(class="nav navbar-nav ml-auto",
+              #         tags$li(class = "nav-item d-md-down-none",
+              #                 a(class="nav-link navbar-toggler aside-menu-toggler",
+              #                   href="#", "☰"))
+              # )
+
+  )
 
 }
-
 
 

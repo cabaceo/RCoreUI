@@ -11,7 +11,7 @@ The [doc](http://coreui.io/docs/getting-started/static-version) for the CoreUI t
 
 ### Prep UI Framework
 
-When firstly checked out the source code, run the following "CMDs" to get all dependencies ready. It includes two parts:
+When checking out the source code for the first time, run the following "CMDs" to get all dependencies ready. It includes two parts:
 
 - Gulp dependencies - support the normal Gulp tasks.
 - UI Framework dependencies - support the running of the UI framework.

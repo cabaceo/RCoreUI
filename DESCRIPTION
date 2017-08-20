@@ -5,7 +5,6 @@ Authors@R: c(
     person("Guangming", "Lang", email = "gmlang@cabaceo.com",
            role = c("aut", "cre")),
     person("Lei", "Shi", email = "foxshee@gmail.com", role = "aut"),
-    person("Shuxiao", "Liu", email = "vxiao2046@gmail.com", role = "aut"),
     person(family = "Cabaceo LLC", role = "cph"),
     person(family = "RStudio", role = c("ctb", "cph")),
     person(family = "Lukasz Holeczek", role = c("ctb", "cph"), 

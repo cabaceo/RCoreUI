@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-# Re-load the current package
+# re-load the current package
 devtools::load_all(".")
 
 shiny::shinyApp(

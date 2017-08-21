@@ -85,37 +85,14 @@
 #' )
 #' }
 #' @export
-dashboardHeader <- function(..., title = NULL, titleWidth = NULL,
+dashboardHeader <- function(..., title = NULL,
                             disable = FALSE, .list = NULL) {
   items <- c(list(...), .list)
   lapply(items, tagAssert, type = "li", class = "dropdown")
 
-  titleWidth <- validateCssUnit(titleWidth)
-
-  # Set up custom CSS for custom width.
-  custom_css <- NULL
-  if (!is.null(titleWidth)) {
-    # This CSS is derived from the header-related instances of '230px' (the
-    # default sidebar width) from inst/AdminLTE/AdminLTE.css. One change is that
-    # instead making changes to the global settings, we've put them in a media
-    # query (min-width: 768px), so that it won't override other media queries
-    # (like max-width: 767px) that work for narrower screens.
-    custom_css <- tags$head(tags$style(HTML(gsub("_WIDTH_", titleWidth, fixed = TRUE, '
-      @media (min-width: 768px) {
-        .main-header > .navbar {
-          margin-left: _WIDTH_;
-        }
-        .main-header .logo {
-          width: _WIDTH_;
-        }
-      }
-    '))))
-  }
-
   tags$header(class = "app-header navbar",
-              custom_css,
               style = if (disable) "display: none;",
-              span(class = "logo", title),
+              span(class = "navbar-title", title),
 
               # toggle button for mobile display????
               tags$button(class="navbar-toggler mobile-sidebar-toggler d-lg-none",
@@ -123,22 +100,18 @@ dashboardHeader <- function(..., title = NULL, titleWidth = NULL,
 
               # a(class="navbar-brand", href="#"), # hardcode title and logo
 
+              # Add left menu list and right menu list.
+              # Still keep the `ul` layout even if there is no element.
               # add left toggle
               tags$ul(class="nav navbar-nav d-md-down-none",
                       tags$li(class="nav-item",
                               a(class="nav-link navbar-toggler sidebar-toggler",
                                 href="#", "☰"))
-              )
+              ),
 
-              # # add right toggle
-              # tags$ul(class="nav navbar-nav ml-auto",
-              #         tags$li(class = "nav-item d-md-down-none",
-              #                 a(class="nav-link navbar-toggler aside-menu-toggler",
-              #                   href="#", "☰"))
-              # )
-
+              # add right toggle
+              tags$ul(class="nav navbar-nav ml-auto")
   )
-
 }
 
 

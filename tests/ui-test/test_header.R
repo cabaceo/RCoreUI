@@ -6,23 +6,23 @@ devtools::load_all(".")
 # A dashboard header with 3 dropdown menus
 header <- dashboardHeader(
   title = "Dashboard Demo",
-  titleWidth = 28
+  titleWidth = 28,
 
-  # # Dropdown menu for messages
-  # dropdownMenu(type = "messages", badgeStatus = "success",
-  #   messageItem("Support Team",
-  #     "This is the content of a message.",
-  #     time = "5 mins"
-  #   ),
-  #   messageItem("Support Team",
-  #     "This is the content of another message.",
-  #     time = "2 hours"
-  #   ),
-  #   messageItem("New User",
-  #     "Can I get some help?",
-  #     time = "Today"
-  #   )
-  # ),
+  # Dropdown menu for messages
+  dropdownMenu(type = "messages", badgeStatus = "success",
+    messageItem("Support Team",
+      "This is the content of a message.",
+      time = "5 mins"
+    ),
+    messageItem("Support Team",
+      "This is the content of another message.",
+      time = "2 hours"
+    ),
+    messageItem("New User",
+      "Can I get some help?",
+      time = "Today"
+    )
+  )
 
   # # Dropdown menu for notifications
   # dropdownMenu(type = "notifications", badgeStatus = "warning",
@@ -57,7 +57,7 @@ header <- dashboardHeader(
   # )
 )
 
-shinyApp(
+shiny::shinyApp(
   ui = dashboardPage(
     header,
     dashboardSidebar(),

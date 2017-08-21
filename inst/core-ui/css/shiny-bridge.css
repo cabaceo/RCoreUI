@@ -5,10 +5,10 @@
  *
 */
 
+
 /* -----------------
  Fonts
  ------------------- */
-
 html {
-    font-size: 16px;
+    font-size: 16px;  /* Reset to Browser default - 16px. */
 }

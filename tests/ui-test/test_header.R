@@ -1,12 +1,13 @@
 #!/usr/bin/env Rscript
 
+library(shiny)
+
 # re-load the current package
 devtools::load_all(".")
 
 # A dashboard header with 3 dropdown menus
 header <- dashboardHeader(
-  title = "Dashboard Demo",
-  titleWidth = 28
+  title = "Dashboard Demo with A Long Name"
 
   # # Dropdown menu for messages
   # dropdownMenu(type = "messages", badgeStatus = "success",
